@@ -1,0 +1,11 @@
+@keyframes marquee {
+    0% { transform: translateX(0%); }   /* Start position */
+    25% { transform: translateX(0%); }    /* Pause at start */
+    50% { transform: translateX(-15%); } /* Move to the left */
+    100% { transform: translateX(0%); } /* Move back to the start */
+  }
+  
+  .animate-marquee {
+    animation: marquee 5s linear infinite;
+  }
+  
