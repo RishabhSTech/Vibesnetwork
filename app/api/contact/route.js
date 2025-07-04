@@ -1,32 +1,37 @@
 import nodemailer from "nodemailer";
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method Not Allowed" });
-  }
+export async function POST(req) {
+  const { name, phone, email, website } = await req.json();
 
-  const { name, email, message } = req.body;
-
-  // Setup transporter with SMTP credentials
   const transporter = nodemailer.createTransport({
-    service: "Gmail", // Use your email provider
+    host: "smtp.hostinger.com",
+    port: 465,
+    secure: true, // SSL
     auth: {
-      user: process.env.EMAIL_USER, // Your email
-      pass: process.env.EMAIL_PASS, // Your email app password
+      user: "mail@shrijantech.com",
+      pass: "Shrijantech@mailtest2025",
     },
   });
 
-  try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "your-email@example.com", // Change to your email
-      subject: "New Contact Form Submission",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-    });
+  const mailOptions = {
+    from: '"The Vibes Network" <mail@shrijantech.com>',
+    to: "rishabhpratap76@gmail.com",
+    subject: "New Contact Form Submission - The Vibes Network",
+    text: `You have received a new submission from your website contact form:
 
-    res.status(200).json({ success: "Email sent successfully!" });
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Website: ${website}
+
+Please respond to the inquiry as soon as possible.
+  `.trim(),
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).json({ error: "Error sending email" });
+    return new Response(JSON.stringify({ success: false, error: error.message }), { status: 500 });
   }
 }

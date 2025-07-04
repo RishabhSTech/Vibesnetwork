@@ -59,7 +59,7 @@ function Button({ text }) {
 
     console.log(JSON.stringify(form));
     // If all validations pass
-    const response = await fetch('https://formspree.io/f/xaneljoa', {
+    const response = await fetch('/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
