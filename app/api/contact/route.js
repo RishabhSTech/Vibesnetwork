@@ -4,18 +4,18 @@ export async function POST(req) {
   const { name, phone, email, website } = await req.json();
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.hostinger.com",
-    port: 465,
-    secure: true, // SSL
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: true,
     auth: {
-      user: "mail@shrijantech.com",
-      pass: "Shrijantech@mailtest2025",
+      user: "connect@thevibes.network",
+      pass: "pdsjjnwgjecfhtya",
     },
   });
 
   const mailOptions = {
-    from: '"The Vibes Network" <mail@shrijantech.com>',
-    to: "rishabhpratap76@gmail.com",
+    from: '"The Vibes Network" <connect@thevibes.network>',
+    to: "rishabhpratap76@gmail.com, chahna@thevibes.network, sagar@thevibes.network, anupriya@thevibes.academy",
     subject: "New Contact Form Submission - The Vibes Network",
     text: `You have received a new submission from your website contact form:
 
