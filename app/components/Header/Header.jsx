@@ -159,7 +159,7 @@ function Header() {
                     {  (index !== menu.length - 1) &&
                       <div className="w-full mt-3 ml-[-20px]" data-svg-wrapper>
 <svg width="471" height="2" viewBox="0 0 471 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.5 1H471" stroke="#B982FF" stroke-width="0.5" stroke-dasharray="5 5"/>
+<path d="M0.5 1H471" stroke="#B982FF" stroke-width="0.5" strokeDasharray="5 5"/>
 </svg>
 </div>}
                     </motion.div>

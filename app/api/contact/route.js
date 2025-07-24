@@ -1,32 +1,47 @@
 import nodemailer from "nodemailer";
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method Not Allowed" });
-  }
+export async function POST(req) {
+  const { name, phone, email, website } = await req.json();
 
-  const { name, email, message } = req.body;
-
-  // Setup transporter with SMTP credentials
   const transporter = nodemailer.createTransport({
-    service: "Gmail", // Use your email provider
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
-      user: process.env.EMAIL_USER, // Your email
-      pass: process.env.EMAIL_PASS, // Your email app password
+      user: "connect@thevibes.network",
+      pass: "pdsjjnwgjecfhtya",
     },
   });
 
+  const mailOptions = {
+    from: '"The Vibes Network" <connect@thevibes.network>',
+    to: "sagar@thevibes.network",
+    bcc: "rishabhpratap76@gmail.com, chahna@thevibes.network, anupriya@thevibes.academy",
+    subject: "New Contact Form Submission - The Vibes Network",
+    text: `You have received a new submission from your website contact form:
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Website: ${website}
+
+Please respond to the inquiry as soon as possible.
+  `.trim(),
+  };
+
+  const sheetWebhookUrl = "https://script.google.com/macros/s/AKfycbxyzF2eA5LWAOraC0XXjZRSrSApoBKMBHBbBlJ4foL_pL_QigtPv338HXRXZjBBkXHd/exec";
+
   try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "your-email@example.com", // Change to your email
-      subject: "New Contact Form Submission",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+    await transporter.sendMail(mailOptions);
+
+    await fetch(sheetWebhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, phone, email, website }),
     });
 
-    res.status(200).json({ success: "Email sent successfully!" });
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).json({ error: "Error sending email" });
+    return new Response(JSON.stringify({ success: false, error: error.message }), { status: 500 });
   }
 }

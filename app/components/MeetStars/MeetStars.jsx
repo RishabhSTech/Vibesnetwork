@@ -1,5 +1,5 @@
 "use client"
-import { useState , useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Cards from "./Cards";
 import MobileCards from "./MobileCards";
@@ -10,179 +10,146 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const tabs = ["Food", "Fashion", "Entertainment", "Lifestyle", "Travel"];
-// const data = {
-//   Food: [
-//     {
-//       id: 1,
-//       username: "@foodineerishita",
-//       followers: "59K",
-//       engagement: "4.18%",
-//       image: "/assets/stars/Ishita-Khajuria.webp",
-//       video: "/assets/video/Ishita.mp4"
-//     },
-//     {
-//       id: 2,
-//       username: "@flavours_of_wok",
-//       followers: "2M",
-//       engagement: "5.02%",
-//       image: "/assets/stars/Aiswarya-kesh.webp",
-//       video: "/assets/video/Aishwariya.mp4"
-//     },
-//     {
-//       id: 3,
-//       username: "@savorytales",
-//       followers: "500K",
-//       engagement: "3.04%",
-//       image: "/assets/stars/Richa.webp",
-//       video: "/assets/video/Richa.mp4"
-//     }
-//   ],
-//   Fashion: [
-//     {
-//       id: 1,
-//       username: "@kanishanancy_mn",
-//       followers: "51K",
-//       engagement: "4.05%",
-//       image: "/assets/stars/Kanisha.webp",
-//       video: "/assets/video/Kanisha.mp4"
-//     },
-//     {
-//       id: 2,
-//       username: "@that_crazy_bee",
-//       followers: "23K",
-//       engagement: "8.85%",
-//       image: "/assets/stars/Sreyashi-Biswas.webp",
-//       video: "/assets/video/Sreyashi.mp4"
-//     },
-//     {
-//       id: 3,
-//       username: "@jinita_sanghvi",
-//       followers: "66K",
-//       engagement: "3.97%",
-//       image: "/assets/stars/Jinita.webp",
-//       video: "/assets/video/Jinita.mp4"
-//     }
-//   ],
-//   Entertainment: [
-//     {
-//       id: 1,
-//       username: "@mehul_chugh0089",
-//       followers: "2M",
-//       engagement: "2.61%",
-//       image: "/assets/stars/Mehul-Chugh.webp",
-//       video: "/assets/video/Mehul.mp4"
-//     },
-//     {
-//       id: 2,
-//       username: "@mn_thapar",
-//       followers: "500K",
-//       engagement: "4.05%",
-//       image: "/assets/stars/Mohali.webp",
-//       video: "/assets/video/Mohali.mp4"
-//     },
-//     {
-//       id: 3,
-//       username: "@sajal_verma77",
-//       followers: "33K",
-//       engagement: "2.82%",
-//       image: "/assets/stars/Sajal-Verma.webp",
-//       video: "/assets/video/Sajal.mp4"
-//     }
-//   ],
-//   Lifestyle: [
-//     {
-//       id: 1,
-//       username: "@saaniyachaudhari_official",
-//       followers: "87K",
-//       engagement: "7.30%",
-//       image: "/assets/stars/Saaniya-Chaudhari.webp",
-//       video: "/assets/video/Saaniya.mp4"
-//     },
-//     {
-//       id: 2,
-//       username: "@lucknowigirl_ruchi",
-//       followers: "8K",
-//       engagement: "4.01%",
-//       image: "/assets/stars/Ruchi.webp",
-//       video: "/assets/video/Richa.mp4"
-//     },
-//     {
-//       id: 3,
-//       username: "@preet12189",
-//       followers: "1M",
-//       engagement: "2.59%",
-//       image: "/assets/stars/Preet.webp",
-//       video: "/assets/video/Preet.mp4"
-//     }
-//   ],
-//   Travel: [
-//     {
-//       id: 1,
-//       username: "@gargi_gangopadhyay",
-//       followers: "71K",
-//       engagement: "2.17%",
-//       image: "/assets/stars/Gargi.webp",
-//       video: "/assets/video/Gargi.mp4"
-//     },
-//     {
-//       id: 2,
-//       username: "@monaa_aashish",
-//       followers: "64K",
-//       engagement: "2.73%",
-//       image: "/assets/stars/Monaa.webp",
-//       video: "/assets/video/Monaa.mp4"
-//     },
-//     {
-//       id: 3,
-//       username: "@dishamotwani",
-//       followers: "97K",
-//       engagement: "6.43%",
-//       image: "/assets/stars/Disha-Motwani.webp",
-//       video: "/assets/video/Disha.mp4"
-//     }
-//   ]
-// }
+const data = {
+  Food: [
+    {
+      id: 1,
+      username: "@foodineerishita",
+      followers: "59K",
+      engagement: "4.18%",
+      image: "/assets/stars/Ishita-Khajuria.webp",
+      video: "/assets/video/Ishita.mp4"
+    },
+    {
+      id: 2,
+      username: "@flavours_of_wok",
+      followers: "2M",
+      engagement: "5.02%",
+      image: "/assets/stars/Aiswarya-kesh.webp",
+      video: "/assets/video/Aishwariya.mp4"
+    },
+    {
+      id: 3,
+      username: "@savorytales",
+      followers: "500K",
+      engagement: "3.04%",
+      image: "/assets/stars/Richa.webp",
+      video: "/assets/video/Richa.mp4"
+    }
+  ],
+  Fashion: [
+    {
+      id: 1,
+      username: "@kanishanancy_mn",
+      followers: "51K",
+      engagement: "4.05%",
+      image: "/assets/stars/Kanisha.webp",
+      video: "/assets/video/Kanisha.mp4"
+    },
+    {
+      id: 2,
+      username: "@that_crazy_bee",
+      followers: "23K",
+      engagement: "8.85%",
+      image: "/assets/stars/Sreyashi-Biswas.webp",
+      video: "/assets/video/Sreyashi.mp4"
+    },
+    {
+      id: 3,
+      username: "@jinita_sanghvi",
+      followers: "66K",
+      engagement: "3.97%",
+      image: "/assets/stars/Jinita.webp",
+      video: "/assets/video/Jinita.mp4"
+    }
+  ],
+  Entertainment: [
+    {
+      id: 1,
+      username: "@mehul_chugh0089",
+      followers: "2M",
+      engagement: "2.61%",
+      image: "/assets/stars/Mehul-Chugh.webp",
+      video: "/assets/video/Mehul.mp4"
+    },
+    {
+      id: 2,
+      username: "@mn_thapar",
+      followers: "500K",
+      engagement: "4.05%",
+      image: "/assets/stars/Mohali.webp",
+      video: "/assets/video/Mohali.mp4"
+    },
+    {
+      id: 3,
+      username: "@sajal_verma77",
+      followers: "33K",
+      engagement: "2.82%",
+      image: "/assets/stars/Sajal-Verma.webp",
+      video: "/assets/video/Sajal.mp4"
+    }
+  ],
+  Lifestyle: [
+    {
+      id: 1,
+      username: "@saaniyachaudhari_official",
+      followers: "87K",
+      engagement: "7.30%",
+      image: "/assets/stars/Saaniya-Chaudhari.webp",
+      video: "/assets/video/Saaniya.mp4"
+    },
+    {
+      id: 2,
+      username: "@lucknowigirl_ruchi",
+      followers: "8K",
+      engagement: "4.01%",
+      image: "/assets/stars/Ruchi.webp",
+      video: "/assets/video/Richa.mp4"
+    },
+    {
+      id: 3,
+      username: "@preet12189",
+      followers: "1M",
+      engagement: "2.59%",
+      image: "/assets/stars/Preet.webp",
+      video: "/assets/video/Preet.mp4"
+    }
+  ],
+  Travel: [
+    {
+      id: 1,
+      username: "@gargi_gangopadhyay",
+      followers: "71K",
+      engagement: "2.17%",
+      image: "/assets/stars/Gargi.webp",
+      video: "/assets/video/Gargi.mp4"
+    },
+    {
+      id: 2,
+      username: "@monaa_aashish",
+      followers: "64K",
+      engagement: "2.73%",
+      image: "/assets/stars/Monaa.webp",
+      video: "/assets/video/Monaa.mp4"
+    },
+    {
+      id: 3,
+      username: "@dishamotwani",
+      followers: "97K",
+      engagement: "6.43%",
+      image: "/assets/stars/Disha-Motwani.webp",
+      video: "/assets/video/Disha.mp4"
+    }
+  ]
+};
 
 
 export default function MeetStars() {
-  const [starData , setStarData] = useState({});
-  useEffect(() => {
-    const fetchStars = async () => {
-      try {
-        const response = await axios.get('https://thevibes.tech/api/meet-stars?populate=*');
-
-        const formattedData = {};
-response.data.data.forEach((item) => {
-  const category = item.Category;
-  
-  if (!formattedData[category]) {
-    formattedData[category] = [];
-  }
-
-  formattedData[category].push({
-    id: item.id,
-    username: item.username,
-    followers: item.followers,
-    engagement: item.engagement,
-    image: item.image ? "https://thevibes.tech"+item.image.url : "https://thevibes.tech",
-    video: item.video ? "https://thevibes.tech"+item.video.url : "https://thevibes.tech"
-  });
-});
-
-        setStarData(formattedData);
-      } catch (error) {
-        console.error('Error fetching Stars:', error);
-      }
-    };
-
-    fetchStars();
-  }, []);
   const [activeTab, setActiveTab] = useState("Travel");
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isOpen2, setIsOpen2] = useState(false);
   const [video , setVideo] = useState("");
-  console.log(starData);
   const videoRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const togglePlay = () => {
@@ -217,7 +184,7 @@ response.data.data.forEach((item) => {
           {tabs.map((tab) => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => { setActiveTab(tab); setCurrentIndex(0); }}
               className={`relative px-4 py-2 font-medium transition-colors ${
                 activeTab === tab ? "text-purple-600" : "text-gray-600"
               }`}
@@ -237,7 +204,6 @@ response.data.data.forEach((item) => {
               className={`relative hidden md:block px-4 py-2 font-medium transition-colors text-gray-600 `}
             >
               + More
-              
             </button>
             
 
@@ -272,6 +238,7 @@ response.data.data.forEach((item) => {
                 onClick={() => {
                   setActiveTab(tab);
                   setIsOpen(false);
+                  setCurrentIndex(0);
                 }}
                 className="py-2 hover:bg-gray-100 cursor-pointer"
               >
@@ -283,11 +250,6 @@ response.data.data.forEach((item) => {
       </AnimatePresence>
     </div>
       </div>
-      {/* <div className="m-auto" data-svg-wrapper>
-        <svg width="1031" height="3" viewBox="0 0 1031 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0.578613 1.23975H1030.04" stroke="#E7DAFF" strokeWidth="2"/>
-        </svg>
-      </div> */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
@@ -297,49 +259,47 @@ response.data.data.forEach((item) => {
           transition={{ duration: 0.3 }}
           className="hidden md:flex flex-row mt-6 justify-center"
         >
-          {starData[activeTab]?.map((user , index) => {
-            if(starData[activeTab].length<=3)
-            return(
-            <motion.div
-              key={user.id}
-              whileHover={{ scale: 1.05 }}
-              onClick={() => setIsOpen2(true)}
-              onMouseEnter={() => setVideo(user.video)}
-              className="relative mx-5 border-2 border-purple-600 overflow-hidden rounded-2xl cursor-pointer"
-            >
-              <motion.div
-                initial={{ y: "100%" }}
-                whileHover={{ y: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-              />
-              <Cards {...user} />
-            </motion.div>
-          )
-          
-          else if(index>=starData[activeTab].length-3)
-            return(
-              <motion.div
-                key={user.id}
-                whileHover={{ scale: 1.05 }}
-                onClick={() => setIsOpen2(true)}
-                onMouseEnter={() => setVideo(user.video)}
-                className="relative mx-5 border-2 border-purple-600 overflow-hidden rounded-2xl cursor-pointer"
-              >
+          {data[activeTab]?.map((user , index) => {
+            if(data[activeTab].length<=3)
+              return(
                 <motion.div
-                  initial={{ y: "100%" }}
-                  whileHover={{ y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                />
-                <Cards {...user} />
-              </motion.div>
-            )
+                  key={user.id}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => setIsOpen2(true)}
+                  onMouseEnter={() => setVideo(user.video)}
+                  className="relative mx-5 border-2 border-purple-600 overflow-hidden rounded-2xl cursor-pointer"
+                >
+                  <motion.div
+                    initial={{ y: "100%" }}
+                    whileHover={{ y: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                  />
+                  <Cards {...user} />
+                </motion.div>
+              );
+            else if(index>=data[activeTab].length-3)
+              return(
+                <motion.div
+                  key={user.id}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => setIsOpen2(true)}
+                  onMouseEnter={() => setVideo(user.video)}
+                  className="relative mx-5 border-2 border-purple-600 overflow-hidden rounded-2xl cursor-pointer"
+                >
+                  <motion.div
+                    initial={{ y: "100%" }}
+                    whileHover={{ y: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                  />
+                  <Cards {...user} />
+                </motion.div>
+              );
           })}
         </motion.div>
       </AnimatePresence>
       <div className="md:hidden flex justify-center w-[98%] flex-row m-auto">
         <div
           className="flex justify-center items-center"
-          
           onClick={onLeft}
         >
           <div className="flex justify-center w-10" data-svg-wrapper>
@@ -349,11 +309,10 @@ response.data.data.forEach((item) => {
 </div>
         </div>
 
-        <div onClick={() =>{ setIsOpen2(true); setVideo(starData[activeTab][currentIndex].video)}} className="relative flex justify-center">
-        {starData[activeTab]?.[currentIndex] && (
-  <MobileCards {...starData[activeTab][currentIndex]} />
-)}
-          
+        <div onClick={() => { setIsOpen2(true); setVideo(data[activeTab][currentIndex].video) }} className="relative flex justify-center">
+          {data[activeTab]?.[currentIndex] && (
+            <MobileCards {...data[activeTab][currentIndex]} />
+          )}
         </div>
         <div
           className="flex justify-around items-center"
