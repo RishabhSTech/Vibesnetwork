@@ -20,6 +20,15 @@ export default function MeetStars() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // Helper function to get the full video URL
+  const getStarVideoLocal = (videoPath) => {
+    if (!videoPath) return "";
+    if (videoPath.startsWith("https://admin.thevibes.academy/network-media/")) {
+      return videoPath;
+    }
+    return `https://admin.thevibes.academy/network-media/${videoPath}`;
+  };
+
   useEffect(() => {
     const fetchStars = async () => {
       try {
@@ -37,8 +46,8 @@ export default function MeetStars() {
             username: item.username,
             followers: item.followers,
             engagement: item.engagement,
-            image: item.image ? `/assets/stars/${item.image}` : "",
-            video: item.video ? `/assets/video/${item.video}` : "",
+            image: item.image ? `https://admin.thevibes.academy/network-media/${item.image}` : "",
+            video: item.video ? `https://admin.thevibes.academy/network-media/${item.video}` : "",
           });
         });
 
@@ -48,6 +57,7 @@ export default function MeetStars() {
         setActiveTab(categories[0] || "");
         setLoading(false);
       } catch (err) {
+        console.error("Error fetching stars:", err);
         setError("Failed to load stars.");
         setLoading(false);
       }
@@ -57,12 +67,14 @@ export default function MeetStars() {
   }, []);
 
   const togglePlay = () => {
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPaused(false);
-    } else {
-      videoRef.current.pause();
-      setIsPaused(true);
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPaused(false);
+      } else {
+        videoRef.current.pause();
+        setIsPaused(true);
+      }
     }
   };
 
@@ -71,10 +83,18 @@ export default function MeetStars() {
       setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
+
   const onRight = () => {
     if (starData[activeTab] && currentIndex < starData[activeTab].length - 1) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     }
+  };
+
+  // Handle video modal opening with proper video setting
+  const handleVideoModal = (videoUrl) => {
+    setVideo(videoUrl);
+    setIsOpen2(true);
+    setIsPaused(false);
   };
 
   if (loading) return <div className="text-center py-10">Loading...</div>;
@@ -147,6 +167,7 @@ export default function MeetStars() {
           </AnimatePresence>
         </div>
       </div>
+      
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
@@ -162,7 +183,7 @@ export default function MeetStars() {
                 <motion.div
                   key={user.id}
                   whileHover={{ scale: 1.05 }}
-                  onClick={() => setIsOpen2(true)}
+                  onClick={() => handleVideoModal(user.video)}
                   onMouseEnter={() => setVideo(user.video)}
                   className="relative mx-5 border-2 border-purple-600 overflow-hidden rounded-2xl cursor-pointer"
                 >
@@ -177,6 +198,7 @@ export default function MeetStars() {
           })}
         </motion.div>
       </AnimatePresence>
+      
       <div className="md:hidden flex justify-center w-[98%] flex-row m-auto">
         <div className="flex justify-center items-center" onClick={onLeft}>
           <div className="flex justify-center w-10" data-svg-wrapper>
@@ -185,7 +207,10 @@ export default function MeetStars() {
             </svg>
           </div>
         </div>
-        <div onClick={() => { setIsOpen2(true); setVideo(starData[activeTab][currentIndex]?.video) }} className="relative flex justify-center">
+        <div 
+          onClick={() => handleVideoModal(starData[activeTab]?.[currentIndex]?.video)} 
+          className="relative flex justify-center cursor-pointer"
+        >
           {starData[activeTab]?.[currentIndex] && (
             <MobileCards {...starData[activeTab][currentIndex]} />
           )}
@@ -198,6 +223,7 @@ export default function MeetStars() {
           </div>
         </div>
       </div>
+      
       {/* Modal */}
       <AnimatePresence>
         {isOpen2 && (
@@ -219,22 +245,25 @@ export default function MeetStars() {
                   className="absolute z-40 top-[-10px] right-[-10px] cursor-pointer"
                 />
                 {/* Video Element */}
-                <video
-                  ref={videoRef}
-                  preload="auto"
-                  loop
-                  autoPlay
-                  width="360"
-                  height="640"
-                  className="rounded-[20px] border-[10px] border-white"
-                  src={getStarVideoLocal(video)}
-                  onClick={togglePlay}
-                  onPause={() => setIsPaused(true)}
-                  onPlay={() => setIsPaused(false)}
-                >
-                  <source src={getStarVideoLocal(video)} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                {video && (
+                  <video
+                    ref={videoRef}
+                    preload="auto"
+                    loop
+                    autoPlay
+                    width="360"
+                    height="640"
+                    className="rounded-[20px] border-[10px] border-white"
+                    src={getStarVideoLocal(video)}
+                    onClick={togglePlay}
+                    onPause={() => setIsPaused(true)}
+                    onPlay={() => setIsPaused(false)}
+                    onError={(e) => console.error("Video error:", e)}
+                  >
+                    <source src={getStarVideoLocal(video)} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
                 {isPaused && (
                   <button
                     onClick={togglePlay}

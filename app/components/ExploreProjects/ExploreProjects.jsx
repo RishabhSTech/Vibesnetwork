@@ -1,38 +1,43 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../Button';
 import VideoPlayer from './VideoPlayer';
+import axios from 'axios';
 
 function ExploreProjects() {
+    const [projects, setProjects] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [playingIndex, setPlayingIndex] = useState(null); // Track the currently playing video index
+    const [playingIndex, setPlayingIndex] = useState(null);
 
-    const data = [
-        { video: "./assets/explore/1.mp4" },
-        { video: "./assets/explore/2.mp4" },
-        { video: "./assets/explore/3.mp4" },
-        { video: "./assets/explore/4.mp4" },
-        { video: "./assets/explore/5.mp4" },
-        { video: "./assets/explore/6.mp4" },
-        { video: "./assets/explore/7.mp4" },
-        { video: "./assets/explore/8.mp4" },
-        { video: "./assets/explore/9.mp4" },
-        { video: "./assets/explore/10.mp4" },
-        { video: "./assets/explore/11.mp4" },
-        { video: "./assets/explore/12.mp4" },
-    ];
+    useEffect(() => {
+        const fetchProjects = async () => {
+            try {
+                const response = await axios.get("https://admin.thevibes.academy/network_content_api.php");
+                setProjects(response.data.projects || []);
+            } catch (error) {
+                console.error('Error fetching projects:', error);
+            }
+        };
+        fetchProjects();
+    }, []);
 
     const onLeft = () => {
         if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
     };
 
     const onRight = () => {
-        if (currentIndex < data.length - 1) setCurrentIndex(currentIndex + 1);
+        if (currentIndex < projects.length - 1) setCurrentIndex(currentIndex + 1);
     };
 
     const handleVideoClick = (index) => {
-        setPlayingIndex(playingIndex === index ? null : index); // Toggle play/pause
+        setPlayingIndex(playingIndex === index ? null : index);
     };
+
+    // Helper for video src
+    const getVideoSrc = (video) =>
+        video && video.trim()
+            ? `https://admin.thevibes.academy/network-media/${video.trim()}`
+            : "";
 
     return (
         <div id="explore-projects" className='mt-20 sm:mt-[120px] flex flex-col items-center'>
@@ -48,11 +53,11 @@ function ExploreProjects() {
 
             {/* Desktop View: 4 Videos */}
             <div className='relative w-[70%] max-w-[1550px] mt-[-250px] mx-auto z-10 hidden md:flex flex-col md:flex-row justify-evenly'>
-                {data.slice(0, 4).map((item, index) => (
-                    <div className="relative" key={index}>
+                {projects.slice(0, 4).map((item, index) => (
+                    <div className="relative" key={item.id || index}>
                         <div className="rounded-[20px] mx-5 max-w-[246.08px] max-h-[410.13px]">
                             <VideoPlayer 
-                                src={item.video} 
+                                src={getVideoSrc(item.video)} 
                                 isPlaying={playingIndex === index} 
                                 onPlay={() => handleVideoClick(index)}
                             />
@@ -64,7 +69,7 @@ function ExploreProjects() {
             {/* Mobile View: Single Video with Navigation */}
             <div className="w-[270px] sm:w-[350px] m-auto mt-10">
                 <div className="relative md:hidden z-10 my-10 flex justify-center mt-[-300px] w-[98%] flex-row m-auto">
-                    <div className="relative z-10  flex justify-center items-center" onClick={onLeft}>
+                    <div className="relative z-10 flex justify-center items-center" onClick={onLeft}>
                         <div className="flex justify-center w-10" data-svg-wrapper>
                             <svg width="7" height="11" viewBox="0 0 7 11"  fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6.19727 0.547119L1.59619 5.14819L6.19727 9.74927" stroke="black" strokeWidth="2" strokeLinecap="round"/>
@@ -74,11 +79,13 @@ function ExploreProjects() {
 
                     <div className="relative min-h-[328px] flex justify-center">
                         <div className="rounded-[10px]">
-                            <VideoPlayer 
-                                src={data[currentIndex].video} 
-                                isPlaying={playingIndex === currentIndex} 
-                                onPlay={() => handleVideoClick(currentIndex)}
-                            />
+                            {projects.length > 0 && (
+                                <VideoPlayer 
+                                    src={getVideoSrc(projects[currentIndex].video)} 
+                                    isPlaying={playingIndex === currentIndex} 
+                                    onPlay={() => handleVideoClick(currentIndex)}
+                                />
+                            )}
                         </div>
                     </div>
 
@@ -90,9 +97,8 @@ function ExploreProjects() {
                         </div>
                     </div>
                 </div>
-                <div className="w-[300px] sm:w-[350px] md:w-fit sm:ml-0  ml-[-5%]">
-
-                <Button text="Get Influencers Now!" />
+                <div className="w-[300px] sm:w-[350px] md:w-fit sm:ml-0 ml-[-5%]">
+                    <Button text="Get Influencers Now!" />
                 </div>
             </div>
         </div>
