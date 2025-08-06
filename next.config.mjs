@@ -12,6 +12,10 @@ const nextConfig = {
         },
         {
           protocol: 'https',
+          hostname: 'admin.thevibes.academy',
+        },
+        {
+          protocol: 'https',
           hostname: 'via.placeholder.com',
         },
         {
