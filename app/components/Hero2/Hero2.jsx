@@ -84,7 +84,7 @@ function Hero2() {
                 <div className='sm:hidden'>
 
         <p className="text-[#554469] mx-auto sm:mx-0 mt-10 md:mr-[-10px]  text-xl font-normal leading-normal">Media Coverage</p>
-<div className='flex mb-10 mx-auto sm:mx-0 sm:-ml-5 items-center scale-90 sm:scale-100 mt-4 flex-row max-w-[900px] justify-start sm:justify-between flex-wrap gap-x-5 gap-y-3 px-0'>
+<div className='flex mb-10 mx-auto sm:mx-0 -ml-5 sm:ml-0 items-center scale-90 sm:scale-100 mt-4 flex-row max-w-[900px] justify-start sm:justify-between flex-wrap gap-x-5 gap-y-3 px-0'>
         <Image onClick={()=>{
           router.push('https://www.educationtimes.com/article/editor-s-pick/99735357/the-vibes-academy-voices-inspiring-a-better-society')
         }} src="assets/education.svg" width={90} height={50} alt="forbes" className='mr-5 hover:cursor-pointer'/>
