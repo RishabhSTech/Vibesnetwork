@@ -41,7 +41,7 @@ function InfluencerMarketing() {
   <motion.div custom={0}
           initial="hidden"
           animate={controls}
-          variants={itemVariants} className="sm:w-[562.43px] mt-7 mx-auto w-[90%] px-4 sm:px-6 py-6 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around gap-[20px] sm:gap-0" >
+          variants={itemVariants} className="sm:w-[562.43px] mt-7 mx-auto w-[90%] px-4 sm:px-6 py-6 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around gap-[20px] sm:gap-[50px]" >
             <Image className="px-2 sm:p-0" src="assets/emerging.svg" width={110} height={100} alt="crown"/>
             <div className="flex flex-col justify-center">
             <p className=" text-[#46009e] max-w-[200px] sm:max-w-[1000px] sm:text-[28px] sm:font-semibold sm:leading-[35px] text-lg font-semibold font-['Inter'] leading-snug">Emerging Opportunities</p>
@@ -52,7 +52,7 @@ function InfluencerMarketing() {
   <motion.div custom={1}
           initial="hidden"
           animate={controls}
-          variants={itemVariants} className="sm:w-[562.43px] mt-7 mx-auto w-[90%] px-4 sm:px-6 py-6 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around gap-[20px] sm:gap-0" >
+          variants={itemVariants} className="sm:w-[562.43px] mt-7 mx-auto w-[90%] px-4 sm:px-6 py-6 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around gap-[20px] sm:gap-[50px]" >
             <Image className="px-2 sm:p-0" src="assets/youth.svg" width={110} height={100} alt="crown"/>
             <div className="flex flex-col justify-center">
             <p className="  text-[#46009e] max-w-[200px] sm:max-w-[1000px] sm:text-[28px] sm:font-semibold sm:leading-[35px] text-lg font-semibold font-['Inter'] leading-snug">Youth Engagement</p>
@@ -62,7 +62,7 @@ function InfluencerMarketing() {
   <motion.div custom={2}
           initial="hidden"
           animate={controls}
-          variants={itemVariants} className="sm:w-[562.43px] mt-7 mx-auto w-[90%] px-4 sm:px-6 py-6 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around gap-[20px] sm:gap-0" >
+          variants={itemVariants} className="sm:w-[562.43px] mt-7 mx-auto w-[90%] px-4 sm:px-6 py-6 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around gap-[20px] sm:gap-[50px]" >
             <Image className="px-2 sm:p-0" src="assets/shift.svg" width={110} height={100} alt="crown"/>
             <div className="flex flex-col justify-center">
             <p className=" text-[#46009e] max-w-[200px] sm:max-w-[1000px] sm:text-[28px] sm:font-semibold sm:leading-[35px] text-lg font-semibold font-['Inter'] leading-snug">Shift in Ad Spends</p>
