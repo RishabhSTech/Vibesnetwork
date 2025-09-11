@@ -32,14 +32,14 @@ function TrustedBy() {
     autoplaySpeed: 3500,
     speed: 500,
     swipeToSlide: true,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 3,
+          slidesToScroll: 1,
         }
       },
       {
@@ -66,13 +66,13 @@ function TrustedBy() {
   }
 
   return (
-    <div className='hidden sm:flex mt-32 mb-10 flex-col items-center md:flex-row max-w-[900px] w-[80%] m-auto justify-around'>
-      <p className="text-[#554469] md:mr-[-10px] text-xl font-normal leading-normal mb-6 md:mb-0">Trusted by</p>
+    <div className="mt-14 sm:-mt-5 mb-20 sm:flex flex-col items-center md:flex-row max-w-[900px] w-[80%] m-auto justify-around">
+      <p className="text-[#554469] text-center md:mr-[-10px] text-xl font-normal leading-normal mb-6 md:mb-0">Trusted by</p>
       <div className="w-full max-w-[700px]">
         <Slider {...settings}>
           {logos.map((logo, index) => (
             <div key={index} className="px-2">
-              <div className="relative w-[200px] h-[50px] m-auto">
+              <div className="relative h-[50px] m-auto">
                 <Image
                   src={`https://admin.thevibes.academy/network-media/${logo.logo}`}
                   alt={logo.client_name || 'Trusted partner'}

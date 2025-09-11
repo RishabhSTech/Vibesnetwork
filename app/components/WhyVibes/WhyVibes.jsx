@@ -1,5 +1,5 @@
 import Card from './Card';
-import TrustedBy from './TrustedBy';
+import MediaCoverage from './MediaCoverage';
 import Button from '../Button';
 const cards = [
     {
@@ -52,7 +52,7 @@ function WhyVibes() {
       <Button text="Schedule Consultation" />
       </div>
 
-      <TrustedBy />
+      <MediaCoverage />
     </div>
   )
 }

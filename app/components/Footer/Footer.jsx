@@ -47,7 +47,7 @@ function Footer() {
             </div>
             <span className="flex flex-row items-start mt-2">
               <div onClick={()=>{
-                window.open("https://www.instagram.com/the.vibes.academy/")
+                window.open("https://www.instagram.com/thevibes.network/")
               }} data-svg-wrapper className="mr-2 relative">
                 <svg
                   width="22"
@@ -165,7 +165,7 @@ function Footer() {
           </div>
           <span className="flex flex-row items-start mt-5">
               <div onClick={()=>{
-                window.open("https://www.instagram.com/the.vibes.academy/")
+                window.open("https://www.instagram.com/thevibes.network/")
               }} data-svg-wrapper className="mr-2 relative">
                 <svg
                   width="22"

@@ -32,7 +32,7 @@ function Stats() {
     <div id="stats" className="max-w-[1350px]  px-10 sm:px-0 flex flex-col justify-around m-auto">
       <motion.div
         ref={ref}
-        className="pt-[100px] flex flex-col md:flex-row justify-around m-auto"
+        className="pt-0 md:pt-[50px] flex flex-col md:flex-row justify-around m-auto"
       >
         <motion.div
           custom={0}

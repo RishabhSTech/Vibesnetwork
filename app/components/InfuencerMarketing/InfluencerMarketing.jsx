@@ -34,39 +34,39 @@ function InfluencerMarketing() {
 
       <p className="hidden sm:block text-center text-[#2d2636] text-5xl font-semibold leading-[59px]">The Rise of <br/>Influencer Marketing in India</p>
       <p className="sm:hidden w-full  text-center text-[#2d2636] text-[28px] font-semibold leading-[34px]">The Rise of <br/>Influencer Marketing <br/>in India</p>
-      <p className=" text-center text-[#001a29] mt-[20px] hidden sm:block sm:text-xl sm:font-normal leading-7">Fueled by digital innovation and a dynamic youth, the growth of influencer marketing in India has been<br></br> nothing short of phenomenal; transforming digital advertising, reshaping brand strategies and encouraging <br></br>a shift towards creator-led campaigns. As more brands incorporate influencer marketing into their media <br></br>plans, it continues to redefine how audiences connect with brands.</p>
+      <p className=" text-center text-[#001a29] mt-[20px] hidden sm:block sm:text-xl sm:font-normal leading-7">Fueled by digital innovation and a dynamic youth, the growth of influencer marketing in India has been nothing short of phenomenal; transforming digital advertising, reshaping brand strategies and encouraging a shift towards creator-led campaigns. As more brands incorporate influencer marketing into their media plans, it continues to redefine how audiences connect with brands.</p>
 
       <div className='flex flex-col md:flex-row justify-around'>
         <div className='flex-col'>
   <motion.div custom={0}
           initial="hidden"
           animate={controls}
-          variants={itemVariants} className="sm:w-[562.43px] mt-7 mx-auto w-[90%] px-2 py-6 sm:p-0 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around " >
+          variants={itemVariants} className="sm:w-[562.43px] mt-7 mx-auto w-[90%] px-4 sm:px-6 py-6 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around gap-[20px] sm:gap-[50px]" >
             <Image className="px-2 sm:p-0" src="assets/emerging.svg" width={110} height={100} alt="crown"/>
             <div className="flex flex-col justify-center">
             <p className=" text-[#46009e] max-w-[200px] sm:max-w-[1000px] sm:text-[28px] sm:font-semibold sm:leading-[35px] text-lg font-semibold font-['Inter'] leading-snug">Emerging Opportunities</p>
-            <p className="hidden sm:block text-[#001a29] mt-2 sm:mt-0 sm:text-lg sm:font-normal sm:leading-snug text-xs font-normal leading-none">The demand for authentic and <br></br>engaging content continues to rise, <br></br>creating new avenues for innovative <br></br>marketing strategies.</p>
-            <p className="sm:hidden text-[#001a29] mt-2 sm:mt-0 sm:text-lg sm:font-normal sm:leading-snug text-xs font-normal leading-none">The demand for authentic and <br></br>engaging content continues to rise, <br></br>creating new avenues for <br></br> innovativemarketing strategies.</p>
+            <p className="hidden sm:block text-[#001a29] mt-2 sm:mt-0 sm:text-lg sm:font-normal sm:leading-snug text-xs font-normal leading-none">The demand for authentic and engaging content continues to rise, creating new avenues for innovative marketing strategies.</p>
+            <p className="sm:hidden text-[#001a29] mt-2 sm:mt-0 sm:text-lg sm:font-normal sm:leading-snug text-xs font-normal leading-none">The demand for authentic and engaging content continues to rise, creating new avenues for innovativemarketing strategies.</p>
             </div>
         </motion.div>
   <motion.div custom={1}
           initial="hidden"
           animate={controls}
-          variants={itemVariants} className="sm:w-[562.43px] mt-5 sm:my-5 mx-auto w-[90%] p-6  sm:p-0 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around " >
+          variants={itemVariants} className="sm:w-[562.43px] mt-7 mx-auto w-[90%] px-4 sm:px-6 py-6 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around gap-[20px] sm:gap-[50px]" >
             <Image className="px-2 sm:p-0" src="assets/youth.svg" width={110} height={100} alt="crown"/>
             <div className="flex flex-col justify-center">
             <p className="  text-[#46009e] max-w-[200px] sm:max-w-[1000px] sm:text-[28px] sm:font-semibold sm:leading-[35px] text-lg font-semibold font-['Inter'] leading-snug">Youth Engagement</p>
-            <p className=" text-[#001a29] mt-2 sm:mt-0 sm:text-lg sm:font-normal sm:leading-snug text-xs font-normal leading-none">Younger demographics are more <br></br>engaged with influencers, presenting a<br></br> prime opportunity for brands to<br></br> connect with them.</p>
+            <p className=" text-[#001a29] mt-2 sm:mt-0 sm:text-lg sm:font-normal sm:leading-snug text-xs font-normal leading-none">Younger demographics are more engaged with influencers, presenting a prime opportunity for brands to connect with them.</p>
             </div>
         </motion.div>
   <motion.div custom={2}
           initial="hidden"
           animate={controls}
-          variants={itemVariants} className="sm:w-[562.43px] sm:mt-0 mt-5  mx-auto w-[90%] p-6  sm:p-0 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around  " >
-            <Image className="px-5 sm:p-0" src="assets/shift.svg" width={110} height={100} alt="crown"/>
+          variants={itemVariants} className="sm:w-[562.43px] mt-7 mx-auto w-[90%] px-4 sm:px-6 py-6 sm:h-[190.08px] bg-[#f6efff] rounded-[20px] flex flex-row justify-around gap-[20px] sm:gap-[50px]" >
+            <Image className="px-2 sm:p-0" src="assets/shift.svg" width={110} height={100} alt="crown"/>
             <div className="flex flex-col justify-center">
             <p className=" text-[#46009e] max-w-[200px] sm:max-w-[1000px] sm:text-[28px] sm:font-semibold sm:leading-[35px] text-lg font-semibold font-['Inter'] leading-snug">Shift in Ad Spends</p>
-            <p className=" text-[#001a29] mt-2 sm:mt-0 sm:text-lg sm:font-normal sm:leading-snug text-xs font-normal leading-none">Influencer marketing is booming in India, <br></br>with brands increasingly integrating it <br></br>into their media plans.</p>
+            <p className=" text-[#001a29] mt-2 sm:mt-0 sm:text-lg sm:font-normal sm:leading-snug text-xs font-normal leading-none">Influencer marketing is booming in India, with brands increasingly integrating it into their media plans.</p>
             </div>
         </motion.div>
 
