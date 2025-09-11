@@ -66,7 +66,7 @@ function TrustedBy() {
   }
 
   return (
-    <div className="mt-20 sm:mt-32 mb-10 sm:flex flex-col items-center md:flex-row max-w-[900px] w-[80%] m-auto justify-around">
+    <div className="mt-14 sm:-mt-5 mb-20 sm:flex flex-col items-center md:flex-row max-w-[900px] w-[80%] m-auto justify-around">
       <p className="text-[#554469] text-center md:mr-[-10px] text-xl font-normal leading-normal mb-6 md:mb-0">Trusted by</p>
       <div className="w-full max-w-[700px]">
         <Slider {...settings}>

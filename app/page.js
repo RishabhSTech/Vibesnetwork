@@ -5,6 +5,7 @@ import Stats from "./components/Stats/Stats";
 import InfluencerMarketing from "./components/InfuencerMarketing/InfluencerMarketing";
 import MarketingEdge from "./components/MarketingEdge/MarketingEdge";
 import WhyVibes from "./components/WhyVibes/WhyVibes";
+import TrustedBy from "./components/WhyVibes/TrustedBy";
 import ExploreProjects from "./components/ExploreProjects/ExploreProjects";
 import AiEnabled from "./components/AIEnabled/AiEnabled";
 import AboutUs from "./components/AboutUs/AboutUs";
@@ -51,12 +52,13 @@ export default function Home() {
     <div className="overflow-hidden">
       <Header1/>
       <Hero2 />
+      <TrustedBy />
       <Stats/>
-      <MeetStars />
+      <ExploreProjects  />
       <InfluencerMarketing />
       <MarketingEdge />
       <WhyVibes  />
-      <ExploreProjects  />
+      <MeetStars />
       <AiEnabled/>
       <AboutUs/>
       <Faqs  />

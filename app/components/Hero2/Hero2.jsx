@@ -25,9 +25,9 @@ function Hero2() {
     initial={{ opacity: 0, y: 20, filter: "blur(10px)" }} // Start position (blurred & lower)
     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} // End position (clear & normal)
   transition={{ duration: 1, ease: "easeOut" }} // Smooth transition
-     className='flex flex-col items-center justify-center pl-5 sm:pl-10 py-10'>
+     className='flex flex-col items-center justify-center sm:-mt-5 md:-mt-[50px] md:-mb-[50px] pl-5 sm:pl-10 py-0'>
         <div className='flex flex-col md:flex-row items-center justify-center'>
-            <div className='flex flex-col  md:mt-0 sm:pt-20'>
+            <div className='flex flex-col  md:mt-0'>
 
       <div>
 
@@ -57,51 +57,11 @@ function Hero2() {
         <div className='w-fit mt-6'>
           <Button text="Get now"/>
         </div>
-        <div className='hidden sm:block'>
-
-        <p className="text-[#554469] mx-auto sm:mx-0 mt-10 md:mr-[-10px] text-xl font-normal leading-normal">Media Coverage</p>
-<div className='flex mb-10 items-center scale-90 sm:scale-100 mt-4 flex-row max-w-[900px] justify-between'>
-        <Image onClick={()=>{
-          router.push('https://www.educationtimes.com/article/editor-s-pick/99735357/the-vibes-academy-voices-inspiring-a-better-society')
-        }} src="assets/education.svg" width={90} height={50} alt="forbes" className='mr-5 hover:cursor-pointer'/>
-        <Image onClick={()=>{
-          router.push('https://www.timesnownews.com/business-economy/industry/indias-vibes-academy-embarks-on-ambitious-skill-revolution-to-shape-formidable-workforce-article-110369285')
-        }} src="assets/times.svg" width={90} height={50} alt="forbes" className=' mr-5  hover:cursor-pointer'/>
-        <Image onClick={()=>{
-          router.push('https://www.bhaskarhindi.com/education/vibes-academy-pioneering-positive-change-in-the-field-of-social-messaging-and-skill-training-1032784')
-        }} src="assets/dainik.svg" width={90} height={50} alt="forbes" className='mr-5 hover:cursor-pointer'/>
-        <Image onClick={()=>{
-          router.push('https://www.abplive.com/brand-wire/the-best-online-platform-for-developing-and-training-influencers-who-set-social-media-trends-2695545')
-        }} src="assets/abp.svg" width={90} height={50} alt="forbes" className='mr-5 hover:cursor-pointer'/>
-        <Image onClick={()=>{
-          router.push('https://english.newsnationtv.com/brand-stories/brand-stories-english/introducing-the-vibes-academy-pioneering-positive-change-in-social-messaging-and-skill-training-259877.html')
-        }} src="assets/nation.svg" width={90} height={50} alt="forbes" className=' hover:cursor-pointer'/>
-    </div>
-        </div>
+        
             </div>
             <div className="sm:ml-14 md:hidden sm:w-auto w-full px-5 sm:mb-0 mt-10 sm:-mt-5">
                 <Image src="assets/indiaHero1.svg" width={500} height={500} alt="hero2"/>
-                <div className='sm:hidden'>
 
-        <p className="text-[#554469] mx-auto sm:mx-0 mt-10 md:mr-[-10px]  text-xl font-normal leading-normal">Media Coverage</p>
-<div className='flex mb-10 mx-auto sm:mx-0 -ml-5 sm:ml-0 items-center scale-90 sm:scale-100 mt-4 flex-row max-w-[900px] justify-start sm:justify-between flex-wrap gap-x-5 gap-y-3 px-0'>
-        <Image onClick={()=>{
-          router.push('https://www.educationtimes.com/article/editor-s-pick/99735357/the-vibes-academy-voices-inspiring-a-better-society')
-        }} src="assets/education.svg" width={90} height={50} alt="forbes" className='mr-5 hover:cursor-pointer'/>
-        <Image onClick={()=>{
-          router.push('https://www.timesnownews.com/business-economy/industry/indias-vibes-academy-embarks-on-ambitious-skill-revolution-to-shape-formidable-workforce-article-110369285')
-        }} src="assets/times.svg" width={90} height={50} alt="forbes" className=' mr-5  hover:cursor-pointer'/>
-        <Image onClick={()=>{
-          router.push('https://www.bhaskarhindi.com/education/vibes-academy-pioneering-positive-change-in-the-field-of-social-messaging-and-skill-training-1032784')
-        }} src="assets/dainik.svg" width={90} height={50} alt="forbes" className='mr-5 hover:cursor-pointer'/>
-        <Image onClick={()=>{
-          router.push('https://www.abplive.com/brand-wire/the-best-online-platform-for-developing-and-training-influencers-who-set-social-media-trends-2695545')
-        }} src="assets/abp.svg" width={90} height={50} alt="forbes" className='mr-5 hover:cursor-pointer'/>
-        <Image onClick={()=>{
-          router.push('https://english.newsnationtv.com/brand-stories/brand-stories-english/introducing-the-vibes-academy-pioneering-positive-change-in-social-messaging-and-skill-training-259877.html')
-        }} src="assets/nation.svg" width={90} height={50} alt="forbes" className=' hover:cursor-pointer'/>
-    </div>
-        </div>
             </div>
             <div className="sm:ml-14 hidden md:block sm:w-auto w-3/4 mb-20 sm:mb-0 mt-10 sm:-mt-5">
                <LanguageCircles/>
